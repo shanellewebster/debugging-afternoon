@@ -25,14 +25,16 @@ export default function reducer(state = initialState, action) {
       });
 
     case ADD_TO_SHOPPING_CART:
+      // let newCart = state.shoppingCart;
+      // newCart.push(action.payload)
       return Object.assign({}, state, {
         shoppingCart: [...state.shoppingCart, action.payload]
       });
 
     case REMOVE_FROM_SHOPPING_CART:
       let newArray = state.shoppingCart.slice();
-      newArray.splice(action.index, 1);
-      return Object.assign({}, { shoppingCart: newArray });
+      newArray.splice(action.payload, 1);
+      return Object.assign({}, state, { shoppingCart: newArray });
 
     default:
       return state;
